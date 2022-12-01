@@ -1,5 +1,7 @@
 package com.bougatf.ahmed.restcontrollers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,6 +20,7 @@ import com.bougatf.ahmed.service.MaisonService ;
 public class MaisonRESTController {
 @Autowired
 MaisonService MaisonService;
+
 @RequestMapping(method = RequestMethod.GET)
 public List<Maison> getAllMaisons() {
 return MaisonService.getAllMaisons();
@@ -31,6 +34,11 @@ return MaisonService.getMaison(id);
 
 @RequestMapping(method = RequestMethod.POST)
 public Maison createMaison(@RequestBody Maison Maison) {
+	
+	   SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+	    Date date = new Date();  
+	    Maison.setDateCreation(date);
+	    Maison.setProp(Maison.getProp());
 return MaisonService.saveMaison(Maison);
 }
 
@@ -46,7 +54,9 @@ public void deleteMaison(@PathVariable("id") Long id)
 MaisonService.deleteMaisonById(id);
 }
 
-@RequestMapping(value="/prodscat/{idCat}",method = RequestMethod.GET)
-public List<Maison> getMaisonsByPropId(@PathVariable("idCat") Long idCat) {
-return MaisonService.findByPropriétaireIdProp(idCat);
+
+
+@RequestMapping(value="/maisprop/{idProp}",method = RequestMethod.GET)
+public List<Maison> getMaisonsByPropId(@PathVariable("idProp") Long idProp) {
+return MaisonService.findByPropriétaireIdProp(idProp);
 }}

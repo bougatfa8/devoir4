@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,5 +21,9 @@ private Long idProp;
 private String nomProp;
 private Integer cinProp;
 private String descriptionProp;
+
+@JsonIgnore
+@OneToMany(mappedBy = "prop")
+private List<Maison> maisons;
 
 }

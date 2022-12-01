@@ -14,6 +14,7 @@ public class MaisonServiceImpl implements MaisonService {
 MaisonRepository MaisonRepository;
 
 public Maison saveMaison(Maison p) {
+	
 	return MaisonRepository.save(p);
 	}
 	@Override

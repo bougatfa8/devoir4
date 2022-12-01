@@ -9,13 +9,9 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
+
 @Entity
 public class Maison {
 @Id
@@ -26,9 +22,67 @@ private String adresseMaison;
 private Integer nbrChambre;
 private Double prixMaison;
 private Date dateCreation;
-@JsonIgnore
+
+
 
 @ManyToOne
 private Propriétaire prop;
 
+
+
+public Long getIdMaison() {
+	return idMaison;
 }
+public void setIdMaison(Long idMaison) {
+	this.idMaison = idMaison;
+}
+public String getVilleMaison() {
+	return villeMaison;
+}
+public void setVilleMaison(String villeMaison) {
+	this.villeMaison = villeMaison;
+}
+public String getAdresseMaison() {
+	return adresseMaison;
+}
+public void setAdresseMaison(String adresseMaison) {
+	this.adresseMaison = adresseMaison;
+}
+public Integer getNbrChambre() {
+	return nbrChambre;
+}
+public void setNbrChambre(Integer nbrChambre) {
+	this.nbrChambre = nbrChambre;
+}
+public Double getPrixMaison() {
+	return prixMaison;
+}
+public void setPrixMaison(Double prixMaison) {
+	this.prixMaison = prixMaison;
+}
+public Date getDateCreation() {
+	return dateCreation;
+}
+public void setDateCreation(Date dateCreation) {
+	this.dateCreation = dateCreation;
+}
+public Propriétaire getProp() {
+	return prop;
+}
+public void setProp(Propriétaire prop) {
+	this.prop = prop;
+}
+public Maison(String villeMaison, String adresseMaison, Integer nbrChambre, Double prixMaison, Date dateCreation,
+		Propriétaire prop) {
+	super();
+
+	this.prop = prop;
+}
+public Maison() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+
+
+}
+
